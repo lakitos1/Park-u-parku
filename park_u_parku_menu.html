@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+<html lang="sr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MENU — Park u parku</title>
+  <!-- Tailwind CSS for clean, responsive layout -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Classic Editorial & Clean Sans Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            paper: '#FAF8F5',
+            surface: '#FFFFFF',
+            ink: '#1C1B18',
+            muted: '#5C5850',
+            accent: '#2D4A36',
+            borderline: '#E2DDD5',
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    /* Classic menu leader dots between dish name and price */
+    .menu-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 0.75rem;
+    }
+    .menu-leader {
+      flex: 1 1 auto;
+      border-bottom: 1px dotted #C8C1B4;
+      margin: 0 0.35rem;
+      min-width: 1.5rem;
+    }
+    /* Hide scrollbar for horizontal category navigation on mobile */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background: #FFFFFF !important;
+      }
+    }
+  </style>
+</head>
+<body class="bg-paper text-ink font-sans antialiased selection:bg-accent selection:text-white">
+
+  <!-- Main Single-Column Classic Menu Sheet -->
+  <div class="max-w-3xl mx-auto px-4 sm:px-8 py-8 sm:py-12">
+
+    <!-- Top Header: MENU prominently on top -->
+    <header class="text-center border-b-2 border-ink pb-6 mb-6">
+      <h1 class="font-serif text-5xl sm:text-6xl font-bold tracking-[0.2em] uppercase text-ink">
+        MENU
+      </h1>
+      <p class="mt-2 text-xs sm:text-sm uppercase tracking-[0.25em] text-muted">
+        Park u parku
+      </p>
+    </header>
+
+    <!-- Sticky Category Navigation & Quick Filter (Clean & Minimal) -->
+    <nav aria-label="Kategorije menija" class="no-print sticky top-0 z-20 bg-paper/95 backdrop-blur-sm border-b border-borderline py-3 mb-8">
+      <!-- Quick Search Input -->
+      <div class="mb-2.5">
+        <label for="menu-search" class="sr-only">Pretraži meni</label>
+        <input
+          id="menu-search"
+          type="search"
+          placeholder="Pretraži jela (npr. ćevapi, omlet, pastrmka, palačinke...)"
+          class="w-full bg-surface border border-borderline rounded-lg px-3.5 py-2 text-sm text-ink placeholder:text-muted focus:outline-none focus:border-accent"
+        />
+      </div>
+
+      <!-- Category Jump Links -->
+      <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-0.5 text-xs sm:text-sm">
+        <a href="#dorucak" class="shrink-0 px-3 py-1.5 rounded-md border border-borderline bg-surface hover:border-accent hover:text-accent font-medium transition-colors">Doručak</a>
+        <a href="#tortilje" class="shrink-0 px-3 py-1.5 rounded-md border border-borderline bg-surface hover:border-accent hover:text-accent font-medium transition-colors">Tortilje</a>
+        <a href="#pizza" class="shrink-0 px-3 py-1.5 rounded-md border border-borderline bg-surface hover:border-accent hover:text-accent font-medium transition-colors">Pizza</a>
+        <a href="#pasta" class="shrink-0 px-3 py-1.5 rounded-md border border-borderline bg-surface hover:border-accent hover:text-accent font-medium transition-colors">Pasta</a>
+        <a href="#corba" class="shrink-0 px-3 py-1.5 rounded-md border border-borderline bg-surface hover:border-accent hover:text-accent font-medium transition-colors">Čorba</a>
+        <a href="#kuvana-jela" class="shrink-0 px-3 py-1.5 rounded-md border border-borderline bg-surface hover:border-accent hover:text-accent font-medium transition-colors">Kuvana jela</a>
+        <a href="#prilozi" class="shrink-0 px-3 py-1.5 rounded-md border border-borderline bg-surface hover:border-accent hover:text-accent font-medium transition-colors">Prilozi</a>
+        <a href="#hleb" class="shrink-0 px-3 py-1.5 rounded-md border border-borderline bg-surface hover:border-accent hover:text-accent font-medium transition-colors">Hleb</a>
+        <a href="#rostilj" class="shrink-0 px-3 py-1.5 rounded-md border border-borderline bg-surface hover:border-accent hover:text-accent font-medium transition-colors">Jela sa roštilja</a>
+        <a href="#po-porudzbini" class="shrink-0 px-3 py-1.5 rounded-md border border-borderline bg-surface hover:border-accent hover:text-accent font-medium transition-colors">Po porudžbini</a>
+        <a href="#riba" class="shrink-0 px-3 py-1.5 rounded-md border border-borderline bg-surface hover:border-accent hover:text-accent font-medium transition-colors">Riba</a>
+        <a href="#salate" class="shrink-0 px-3 py-1.5 rounded-md border border-borderline bg-surface hover:border-accent hover:text-accent font-medium transition-colors">Salate</a>
+        <a href="#dezert" class="shrink-0 px-3 py-1.5 rounded-md border border-borderline bg-surface hover:border-accent hover:text-accent font-medium transition-colors">Dezert</a>
+        <a href="#sladoled" class="shrink-0 px-3 py-1.5 rounded-md border border-borderline bg-surface hover:border-accent hover:text-accent font-medium transition-colors">Sladoled</a>
+      </div>
+    </nav>
+
+    <!-- Empty Search Message -->
+    <div id="no-results" class="hidden text-center py-10 px-4 bg-surface border border-borderline rounded-lg mb-8">
+      <p class="text-muted text-sm">Nema pronađenih stavki za unetu pretragu.</p>
+      <button id="clear-search" type="button" class="mt-3 px-4 py-2 text-xs font-medium uppercase tracking-wider border border-ink rounded-md hover:bg-ink hover:text-white transition-colors">
+        Prikaži ceo meni
+      </button>
+    </div>
+
+    <!-- Full Menu Container -->
+    <main id="menu-content" class="space-y-10">
+
+      <!-- 1. DORUČAK -->
+      <section id="dorucak" class="menu-section scroll-mt-32 bg-surface border border-borderline rounded-xl p-5 sm:p-8 shadow-sm">
+        <h2 class="font-serif text-2xl sm:text-3xl font-bold uppercase tracking-wider text-accent border-b border-borderline pb-2.5 mb-5">
+          DORUČAK
+        </h2>
+        <ul class="space-y-3 text-sm sm:text-base">
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Park doručak</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">700.00</span>
+            </div>
+            <p class="text-xs sm:text-sm text-muted mt-0.5">(Lepinja, kajmak, pršuta, jaja)</p>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Kosjerićki doručak</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">650.00</span>
+            </div>
+            <p class="text-xs sm:text-sm text-muted mt-0.5">(Projarice, slanina, jaja, paradajz, krastavac, pomfrit)</p>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Francuske prženice</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">700.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Prženice</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">550.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Uštipci</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">550.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Komplet lepinja</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">450.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Kačamak</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">420.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Omlet šunka</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">470.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Omlet sir-spanać</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">470.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Omlet slanina</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">490.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Omlet dimljeni sir</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">520.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Omlet šampinjoni</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">490.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Viršle i jaja</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">550.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Jaja na oko</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">350.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Jaja sa slaninom</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">490.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Jaja sa šunkom</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">470.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Slane palačinke</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">600.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Pohovane palačinke</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">800.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Posne bruskete</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">800.00</span>
+            </div>
+          </li>
+        </ul>
+
+        <!-- Dodatak Doručak -->
+        <div class="mt-6 pt-4 border-t border-dashed border-borderline">
+          <h3 class="text-xs font-semibold uppercase tracking-widest text-muted mb-3">DODATAK:</h3>
+          <ul class="space-y-2.5 text-sm sm:text-base">
+            <li class="menu-item">
+              <div class="menu-row">
+                <span class="font-medium">Jogurt</span>
+                <span class="menu-leader" aria-hidden="true"></span>
+                <span class="font-semibold tabular-nums shrink-0">100.00</span>
+              </div>
+            </li>
+            <li class="menu-item">
+              <div class="menu-row">
+                <span class="font-medium">Kiselo mleko</span>
+                <span class="menu-leader" aria-hidden="true"></span>
+                <span class="font-semibold tabular-nums shrink-0">130.00</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 2. TORTILJE -->
+      <section id="tortilje" class="menu-section scroll-mt-32 bg-surface border border-borderline rounded-xl p-5 sm:p-8 shadow-sm">
+        <h2 class="font-serif text-2xl sm:text-3xl font-bold uppercase tracking-wider text-accent border-b border-borderline pb-2.5 mb-5">
+          TORTILJE
+        </h2>
+        <ul class="space-y-3 text-sm sm:text-base">
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Tortilja šunka</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">350.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Tortilja čajna</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">400.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Tortilja kulen</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">400.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Tortilja pršuta</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">470.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Tortilja tunjevina</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">470.00</span>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <!-- 3. PIZZA -->
+      <section id="pizza" class="menu-section scroll-mt-32 bg-surface border border-borderline rounded-xl p-5 sm:p-8 shadow-sm">
+        <h2 class="font-serif text-2xl sm:text-3xl font-bold uppercase tracking-wider text-accent border-b border-borderline pb-2.5 mb-5">
+          PIZZA
+        </h2>
+        <ul class="space-y-3 text-sm sm:text-base">
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Park pizza</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">1300.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Kaprićoza</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">900.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Posna pizza</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">900.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Mini pizza <span class="font-normal text-muted text-xs sm:text-sm">(kaprićoza, posna)</span></span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">320.00</span>
+            </div>
+          </li>
+        </ul>
+
+        <!-- Dodatak Pizza -->
+        <div class="mt-6 pt-4 border-t border-dashed border-borderline">
+          <h3 class="text-xs font-semibold uppercase tracking-widest text-muted mb-3">DODATAK:</h3>
+          <ul class="space-y-2.5 text-sm sm:text-base">
+            <li class="menu-item">
+              <div class="menu-row">
+                <span class="font-medium">Goveđa salata</span>
+                <span class="menu-leader" aria-hidden="true"></span>
+                <span class="font-semibold tabular-nums shrink-0">150.00</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 4. PASTA -->
+      <section id="pasta" class="menu-section scroll-mt-32 bg-surface border border-borderline rounded-xl p-5 sm:p-8 shadow-sm">
+        <h2 class="font-serif text-2xl sm:text-3xl font-bold uppercase tracking-wider text-accent border-b border-borderline pb-2.5 mb-5">
+          PASTA
+        </h2>
+        <ul class="space-y-3 text-sm sm:text-base">
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Bolognese</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">780.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Carbonara</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">820.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Rižoto sa piletinom i pečurkama</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">850.00</span>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <!-- 5. ČORBA -->
+      <section id="corba" class="menu-section scroll-mt-32 bg-surface border border-borderline rounded-xl p-5 sm:p-8 shadow-sm">
+        <h2 class="font-serif text-2xl sm:text-3xl font-bold uppercase tracking-wider text-accent border-b border-borderline pb-2.5 mb-5">
+          ČORBA
+        </h2>
+        <ul class="space-y-3 text-sm sm:text-base">
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Čorba teleća</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">390.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Čorba riblja</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">310.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Domaća supa</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">320.00</span>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <!-- 6. KUVANA JELA -->
+      <section id="kuvana-jela" class="menu-section scroll-mt-32 bg-surface border border-borderline rounded-xl p-5 sm:p-8 shadow-sm">
+        <h2 class="font-serif text-2xl sm:text-3xl font-bold uppercase tracking-wider text-accent border-b border-borderline pb-2.5 mb-5">
+          KUVANA JELA
+        </h2>
+        <ul class="space-y-3 text-sm sm:text-base">
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Dnevno kuvano jelo</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="text-xs sm:text-sm italic text-muted shrink-0">dnevna ponuda</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Pasulj sa rebrima</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">450.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Prebranac</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">500.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Posni pasulj</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">350.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Ribić</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">790.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Gulaš</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">690.00</span>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <!-- 7. PRILOZI -->
+      <section id="prilozi" class="menu-section scroll-mt-32 bg-surface border border-borderline rounded-xl p-5 sm:p-8 shadow-sm">
+        <h2 class="font-serif text-2xl sm:text-3xl font-bold uppercase tracking-wider text-accent border-b border-borderline pb-2.5 mb-5">
+          PRILOZI
+        </h2>
+        <ul class="space-y-3 text-sm sm:text-base">
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Pomfrit</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">340.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Grilovano povrće</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">450.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Pekarski krompir</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">340.00</span>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <!-- 8. HLEB -->
+      <section id="hleb" class="menu-section scroll-mt-32 bg-surface border border-borderline rounded-xl p-5 sm:p-8 shadow-sm">
+        <h2 class="font-serif text-2xl sm:text-3xl font-bold uppercase tracking-wider text-accent border-b border-borderline pb-2.5 mb-5">
+          HLEB
+        </h2>
+        <ul class="space-y-3 text-sm sm:text-base">
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Lepinje</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">120.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Tortilje</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">110.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Štapići sa belim lukom</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">180.00</span>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <!-- 9. JELA SA ROŠTILJA -->
+      <section id="rostilj" class="menu-section scroll-mt-32 bg-surface border border-borderline rounded-xl p-5 sm:p-8 shadow-sm">
+        <h2 class="font-serif text-2xl sm:text-3xl font-bold uppercase tracking-wider text-accent border-b border-borderline pb-2.5 mb-5">
+          JELA SA ROŠTILJA
+        </h2>
+        <ul class="space-y-3 text-sm sm:text-base">
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Svinjski vrat</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">900.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Dimljena vešalica</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">1200.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Bela vešalica</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">980.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Ćevapi</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">930.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Park Ćevapi</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">1230.00</span>
+            </div>
+            <p class="text-xs sm:text-sm text-muted mt-0.5">(Ćevapi u kajmaku i ajvaru)</p>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Pljeskavica</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">930.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Punjena pljeskavica</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">1150.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Gurmanska pljeskavica</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">1200.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Punjena vešalica</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">1380.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Mozaik piletina</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">1200.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Mešano meso</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">2100.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Park mešano meso</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">4900.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Pileće belo</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">880.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Pileće belo sa kačkavaljem</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">950.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Batak</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">2200.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Punjeni batak</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">2700.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Park batak</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">1100.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Džigerica pileća</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">700.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Kobasice sa sirom</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">1100.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Domaće kobasice</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">980.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Svinjski ražnjići</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">850.00</span>
+            </div>
+          </li>
+        </ul>
+
+        <!-- Dodatak Roštilj -->
+        <div class="mt-6 pt-4 border-t border-dashed border-borderline">
+          <h3 class="text-xs font-semibold uppercase tracking-widest text-muted mb-3">DODATAK:</h3>
+          <ul class="space-y-2.5 text-sm sm:text-base">
+            <li class="menu-item">
+              <div class="menu-row">
+                <span class="font-medium">Kajmak</span>
+                <span class="menu-leader" aria-hidden="true"></span>
+                <span class="font-semibold tabular-nums shrink-0">150.00</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 10. JELA PO PORUDŽBINI -->
+      <section id="po-porudzbini" class="menu-section scroll-mt-32 bg-surface border border-borderline rounded-xl p-5 sm:p-8 shadow-sm">
+        <h2 class="font-serif text-2xl sm:text-3xl font-bold uppercase tracking-wider text-accent border-b border-borderline pb-2.5 mb-5">
+          JELA PO PORUDŽBINI
+        </h2>
+        <ul class="space-y-3 text-sm sm:text-base">
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Natur šnicla</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">970.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Bečka šnicla</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">950.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Karađorđeva šnicla mala</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">960.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Karađorđeva šnicla velika</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">1320.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Pileći štapići sa susamom</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">990.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Krilca</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">900.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Dinstana teletina</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="text-xs sm:text-sm italic text-muted shrink-0">po porudžbini</span>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <!-- 11. RIBA -->
+      <section id="riba" class="menu-section scroll-mt-32 bg-surface border border-borderline rounded-xl p-5 sm:p-8 shadow-sm">
+        <h2 class="font-serif text-2xl sm:text-3xl font-bold uppercase tracking-wider text-accent border-b border-borderline pb-2.5 mb-5">
+          RIBA
+        </h2>
+        <ul class="space-y-3 text-sm sm:text-base">
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Pastrmka na žaru</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">2200.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Fileti pastrmke</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="text-xs sm:text-sm italic text-muted shrink-0">po ponudi</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Fileti soma</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">1850.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Dimljeni šaran</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="text-xs sm:text-sm italic text-muted shrink-0">po ponudi</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Losos</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="text-xs sm:text-sm italic text-muted shrink-0">po ponudi</span>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <!-- 12. SALATE -->
+      <section id="salate" class="menu-section scroll-mt-32 bg-surface border border-borderline rounded-xl p-5 sm:p-8 shadow-sm">
+        <h2 class="font-serif text-2xl sm:text-3xl font-bold uppercase tracking-wider text-accent border-b border-borderline pb-2.5 mb-5">
+          SALATE
+        </h2>
+        <ul class="space-y-3 text-sm sm:text-base">
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Cezar</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">880.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Krompir salata</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">370.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Moravska</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">470.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Vitaminska</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">370.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Šopska</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">390.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Grčka</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">450.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Srpska</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">390.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Pečena paprika <span class="text-accent font-bold">*</span></span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">390.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Mešana salata</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">360.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Paradajz sa sir</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">390.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Kupus svež</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">350.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Presovani kupus <span class="text-accent font-bold">*</span></span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">450.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Kiseli kupus</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">390.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Cvekla</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">350.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Paprika u pavlaci</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">350.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Ljuta sveža</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">130.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Ljuta pečena</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">150.00</span>
+            </div>
+          </li>
+        </ul>
+
+        <!-- Zimske salate napomena -->
+        <p class="mt-5 pt-3 border-t border-dashed border-borderline text-xs sm:text-sm italic text-muted">
+          * Zimske salate
+        </p>
+      </section>
+
+      <!-- 13. DEZERT -->
+      <section id="dezert" class="menu-section scroll-mt-32 bg-surface border border-borderline rounded-xl p-5 sm:p-8 shadow-sm">
+        <h2 class="font-serif text-2xl sm:text-3xl font-bold uppercase tracking-wider text-accent border-b border-borderline pb-2.5 mb-5">
+          DEZERT
+        </h2>
+        <ul class="space-y-3 text-sm sm:text-base">
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Palačinke krem plazma</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">380.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Palačinke džem</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">350.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Palačinke med orasi</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">390.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Palačinke pistać malina</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">900.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Tufahije</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">560.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Baklave</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">380.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Žito sa šlagom</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">380.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Lava kolač</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">900.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Kolač sa makom</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">900.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Pita sa jabukama</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">900.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Pita sa višnjama</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">900.00</span>
+            </div>
+          </li>
+        </ul>
+
+        <!-- Dodatak Dezert -->
+        <div class="mt-6 pt-4 border-t border-dashed border-borderline">
+          <h3 class="text-xs font-semibold uppercase tracking-widest text-muted mb-3">DODATAK:</h3>
+          <ul class="space-y-2.5 text-sm sm:text-base">
+            <li class="menu-item">
+              <div class="menu-row">
+                <span class="font-medium">Banana</span>
+                <span class="menu-leader" aria-hidden="true"></span>
+                <span class="font-semibold tabular-nums shrink-0">70.00</span>
+              </div>
+            </li>
+            <li class="menu-item">
+              <div class="menu-row">
+                <span class="font-medium">Malina</span>
+                <span class="menu-leader" aria-hidden="true"></span>
+                <span class="font-semibold tabular-nums shrink-0">110.00</span>
+              </div>
+            </li>
+            <li class="menu-item">
+              <div class="menu-row">
+                <span class="font-medium">Višnja</span>
+                <span class="menu-leader" aria-hidden="true"></span>
+                <span class="font-semibold tabular-nums shrink-0">110.00</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 14. SLADOLED -->
+      <section id="sladoled" class="menu-section scroll-mt-32 bg-surface border border-borderline rounded-xl p-5 sm:p-8 shadow-sm">
+        <h2 class="font-serif text-2xl sm:text-3xl font-bold uppercase tracking-wider text-accent border-b border-borderline pb-2.5 mb-5">
+          SLADOLED
+        </h2>
+        <ul class="space-y-3 text-sm sm:text-base">
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Kugla sladoleda</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">160.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Vruće maline sa sladoledom</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">560.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Voćna salata</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">450.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Banana split</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="font-semibold tabular-nums shrink-0">470.00</span>
+            </div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-row">
+              <span class="font-medium">Jagoda kup</span>
+              <span class="menu-leader" aria-hidden="true"></span>
+              <span class="text-xs sm:text-sm italic text-muted shrink-0">po ponudi</span>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+    </main>
+
+    <!-- Bottom Footer: Park u parku prominently at the end -->
+    <footer class="mt-12 pt-8 pb-6 border-t-2 border-ink text-center">
+      <p class="font-serif text-3xl sm:text-4xl font-bold tracking-wide text-ink">
+        Park u parku
+      </p>
+      <p class="mt-2 text-xs text-muted">
+        Cene su izražene u dinarima (RSD).
+      </p>
+      <div class="no-print mt-4">
+        <a href="#" class="inline-block text-xs uppercase tracking-widest text-muted hover:text-ink underline underline-offset-4">
+          Povratak na vrh ↑
+        </a>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Minimal Vanilla JS for Instant Menu Filtering (Serbian diacritic-friendly) -->
+  <script>
+    (function () {
+      const searchInput = document.getElementById('menu-search');
+      const clearBtn = document.getElementById('clear-search');
+      const noResults = document.getElementById('no-results');
+      const sections = document.querySelectorAll('.menu-section');
+
+      // Normalize Serbian Latin diacritics so "cevapi" matches "ćevapi", "karadjordjeva" matches "karađorđeva"
+      function normalizeText(str) {
+        return str
+          .toLowerCase()
+          .replace(/đ/g, 'dj')
+          .normalize('NFD')
+          .replace(/[\u0300-\u036f]/g, '');
+      }
+
+      function filterMenu() {
+        const query = normalizeText(searchInput.value.trim());
+        let visibleSectionsCount = 0;
+
+        sections.forEach((section) => {
+          const items = section.querySelectorAll('.menu-item');
+          let visibleItemsInSection = 0;
+
+          items.forEach((item) => {
+            const text = normalizeText(item.textContent);
+            const match = query === '' || text.includes(query);
+            item.style.display = match ? '' : 'none';
+            if (match) visibleItemsInSection++;
+          });
+
+          if (visibleItemsInSection > 0) {
+            section.style.display = '';
+            visibleSectionsCount++;
+          } else {
+            section.style.display = 'none';
+          }
+        });
+
+        if (visibleSectionsCount === 0 && query !== '') {
+          noResults.classList.remove('hidden');
+        } else {
+          noResults.classList.add('hidden');
+        }
+      }
+
+      searchInput.addEventListener('input', filterMenu);
+      clearBtn.addEventListener('click', () => {
+        searchInput.value = '';
+        filterMenu();
+        searchInput.focus();
+      });
+    })();
+  </script>
+</body>
+</html>
